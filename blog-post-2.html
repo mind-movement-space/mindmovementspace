@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleared to Play. Not Ready to Return. – The Mind Movement Space</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fafaf7;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid #e5e5e0;
+      background: #fafaf7;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-family: 'Georgia', serif;
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+
+    .nav-logo-text strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo-text span {
+      font-size: 0.78rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul li a {
+      color: #444;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover { color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a; }
+
+    /* ── Article Layout ── */
+    .article-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: #1a1a1a; text-decoration: none; }
+    .back-link::before { content: "← "; }
+
+    .article-title {
+      font-family: 'Georgia', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: normal;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+
+    .article-meta {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .article-meta strong {
+      color: #555;
+      font-weight: 600;
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 1px solid #e5e5e0;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Article Body ── */
+    .article-body p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      color: #2a2a2a;
+    }
+
+    .article-body h2 {
+      font-family: 'Georgia', serif;
+      font-size: 1.3rem;
+      font-weight: normal;
+      margin: 2.5rem 0 1rem;
+      color: #1a1a1a;
+    }
+
+    .article-body strong {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .article-body em {
+      font-style: italic;
+    }
+
+    /* ── CTA Block ── */
+    .article-cta {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e5e0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.5rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      border: 1px solid #1a1a1a;
+      color: #1a1a1a;
+      background: transparent;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #1a1a1a; color: #fafaf7; text-decoration: none; }
+
+    .btn-primary {
+      background: #1a1a1a;
+      color: #fafaf7;
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 3rem 2.5rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    footer h3 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-family: 'Georgia', serif;
+    }
+
+    footer h3 em { font-style: italic; color: #bfa97a; }
+
+    footer p, footer a { color: #aaa; line-height: 2; }
+    footer a:hover { color: #fff; }
+
+    footer strong { color: #ddd; }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .footer-bottom {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #333;
+      color: #666;
+      font-size: 0.78rem;
+    }
+
+    .social-links { display: flex; gap: 1rem; margin-top: 0.75rem; }
+    .social-links a { color: #aaa; font-size: 0.85rem; }
+    .social-links a:hover { color: #fff; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+      nav ul { gap: 1rem; flex-wrap: wrap; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      <img src="https://mind-movement-space.github.io/mindmovementspace/logo.png" alt="The Mind Movement Space" />
+      <div class="nav-logo-text">
+        <strong>The Mind Movement Space</strong>
+        <span>Master your mind. Elevate your performance.</span>
+      </div>
+    </div>
+    <ul>
+      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#intro">Home</a></li>
+      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#about">About</a></li>
+      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#services">Services</a></li>
+      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#experience">Experience</a></li>
+      <li><a href="https://mind-movement-space.github.io/mindmovementspace/blog.html">Blog</a></li>
+      <li><a href="#footer">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- Article -->
+  <main class="article-wrapper">
+    <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html" class="back-link">Back to Blog</a>
+
+    <h1 class="article-title">Cleared to Play. Not Ready to Return.</h1>
+
+    <p class="article-meta"><strong>Sakshi Jhaveri</strong> &nbsp;·&nbsp; 14th May 2026</p>
+
+    <hr class="article-divider" />
+
+    <div class="article-body">
+
+      <p>Due to an injury, a 15-year-old athlete was advised to take a month off.</p>
+
+      <p>It doesn't seem like much, a month. However, it can seem like an eternity to athletes.</p>
+
+      <p>Something didn't feel quite right when they eventually returned. Not in a physical sense. But on the inside.</p>
+
+      <p>They hadn't disclosed their struggles to anyone. Not their coaches. Not their parents. Not their teammates. They simply carried it. Silently. Alone.</p>
+
+      <p>And when they finally spoke about it, they said something worth holding onto. <em>"I was not able to play my sport for so long. I didn't like it when I was not allowed to play. It didn't feel nice. It felt like I lost a part of me."</em> And they said all of this while crying their eyes out.</p>
+
+      <p>That feeling? It's more common than people think.</p>
+
+      <h2>It's more than just physical</h2>
+
+      <p>Getting clearance from your physician or physiotherapist feels like the moment you've been waiting for.</p>
+
+      <p>And it is. It really is.</p>
+
+      <p>However, such clearance often comes with something unexpected for many athletes. The body is ready, but the mind is not quite there yet.</p>
+
+      <p>We talk about the physical aspects of injuries all the time. The timeline, the workouts, the scans, the rehabilitation.</p>
+
+      <p>However, we don't talk enough about what is happening on the inside.</p>
+
+      <p>The self-doubt. The worry that it will recur. The strange grief of having been away from something that feels like a huge part of who you are.</p>
+
+      <p>Being away from sports for even a few weeks might seem like much more than just missing practice. For athletes whose identity, routine, and friendships all revolve around their sport, that absence cuts deep.</p>
+
+      <p>It doesn't make them weak. It makes them human.</p>
+
+      <h2>The ones who don't say anything</h2>
+
+      <p>There is something that happens in sport settings more often than people realise.</p>
+
+      <p>A lot of young athletes hide their injuries. They don't tell their coaches. They don't tell their parents. They just carry it. Quietly. Alone. And hope nobody notices. Because telling someone means being asked to rest. And resting means losing their spot. Falling behind. Watching everyone else move forward while they sit on the sidelines.</p>
+
+      <p>In many sport environments, athletes have hidden their injuries for weeks. Sometimes longer. And when people around them eventually find out, the practical support kicks in quickly. Coaches step in, arrangements are made, the physical side gets taken care of.</p>
+
+      <p>But the emotional side stays buried.</p>
+
+      <p>Some athletes will deny their injury even in spaces that are meant to feel safe. Because the fear — of disappointing parents, of being seen as weak, of losing everything they have worked for — runs so deep that silence just feels easier.</p>
+
+      <p>That is what happens when sport culture ties an athlete's worth entirely to their performance.</p>
+
+      <h2>What that silence costs them</h2>
+
+      <p>In the short term, hiding an injury turns something manageable into something serious. And the longer-term impact is quieter and, honestly, more damaging.</p>
+
+      <p>It teaches athletes to stop listening to their bodies. It teaches them that pain is something to push through, not pay attention to.</p>
+
+      <p>And it builds a habit of staying silent about struggle that doesn't just disappear when the injury heals.</p>
+
+      <h2>What can actually help</h2>
+
+      <p>If you're an athlete reading this, the first thing I want you to do is to speak up early. Telling someone isn't giving up. It's actually what gets you back faster and stronger. The longer you hide it, the harder the road becomes — physically and mentally.</p>
+
+      <p>And if you're recovering, give yourself permission to feel whatever you're feeling. The fear, the frustration, the doubt — it's all valid. You don't have to pretend you are fine just because the scans say you are. Work on your mental return alongside your physical one. Visualise yourself back in the game. Reconnect with why you love your sport. Be around your team even when you're not playing. Ease back in without the pressure of performing immediately.</p>
+
+      <p>If the anxiety around returning feels too big to manage on your own, that's okay too. That is exactly where a sport psychologist can help. It's not about being broken. It's about having support for every part of the process. A sport psychologist works with athletes on the fear of re-injury, rebuilding confidence, working through identity and loss, and creating a mental return to play that runs alongside the physical one. Because one without the other is never really the full picture.</p>
+
+      <p><strong>For parents</strong>, the most important thing you can do is make it safe for them to tell you. Ask how they're feeling, not just how training went. And pay attention to how you respond when they do tell you something. If the first reaction is panic, frustration, or pressure, they'll remember that. And next time, they may not say anything at all. Creating a space where they can be honest without the fear of disappointing you is one of the most powerful things you can do for them.</p>
+
+      <p><strong>And for coaches</strong>, the culture around injury starts in your environment. When rest is normalised, when recovery is treated as part of training and not a setback, athletes stop feeling like they have to hide. The athletes who trust their coaches enough to be honest about their injuries are also the ones who come back better. That trust is built over time, in the small moments, not just the big ones.</p>
+
+      <h2>The road back takes time</h2>
+
+      <p>Returning to sport isn't just a physical process. It's an emotional one too.</p>
+
+      <p>The hesitation, the doubt, the days where everything is fine physically but something still feels off — that's all a part of it.</p>
+
+      <p>Be as patient with your mind as you were with your body.</p>
+
+      <p><strong>At The Mind Movement Space</strong>, we work with athletes, the fitness and exercise community, and those on a rehabilitation journey — because the psychological side of movement matters at every level.</p>
+
+      <div class="article-cta">
+        <a href="#footer" class="btn btn-primary">Get in Touch</a>
+        <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html" class="btn">Back to Blog</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div>
+        <h3>The Mind <em>Movement</em> Space</h3>
+        <p><strong>Email</strong><br><a href="mailto:sakshipjhaveri@gmail.com">sakshipjhaveri@gmail.com</a></p>
+        <p><strong>Phone</strong><br><a href="tel:+917600640995">+91 76006 40995</a></p>
+        <p><strong>WhatsApp</strong><br><a href="https://wa.me/917600640995?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20services">Message on WhatsApp</a></p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/sakshi-jhaveri">LinkedIn</a>
+          <a href="https://www.instagram.com/themindmovementspace">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <p style="font-size:0.82rem; color:#777; margin-bottom:0.75rem;">Stay connected for insights on sport, movement, and psychological well-being.</p>
+        <nav class="footer-nav">
+          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#intro">Home</a>
+          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#about">About</a>
+          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#services">Services</a>
+          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#experience">Experience</a>
+          <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html">Blog</a>
+          <a href="#footer">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 The Mind Movement Space &nbsp;·&nbsp; Sakshi Jhaveri – Sport &amp; Exercise Psychologist
+    </div>
+  </footer>
+
+</body>
+</html>
