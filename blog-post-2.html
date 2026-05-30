@@ -1,385 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cleared to Play. Not Ready to Return. – The Mind Movement Space</title>
-  <style>
-    /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Psychological Cost of Being Injured. – The Mind Movement Space</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:      #FAF6EF;
+  --sand:       #EDE4D7;
+  --terracotta: #C17D5A;
+  --deep-tc:    #9A5F40;
+  --gold:       #C4A46A;
+  --charcoal:   #2E2C2A;
+  --mid:        #6B6460;
+  --white:      #FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.75;
+  overflow-x:hidden;
+}
 
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #fafaf7;
-      color: #1a1a1a;
-      line-height: 1.75;
-    }
+/* ═══════════ HEADER ═══════════ */
+#header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(250,246,239,.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(193,125,90,.18);
+  padding:0 4rem;height:76px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-wrap{display:flex;align-items:center;gap:.75rem;}
+.logo-img{width:90px;height:68px;flex-shrink:0;display:block;}
+.logo-text{text-align:center;}
+.logo-text strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--deep-tc);letter-spacing:.02em;}
+.logo-text span{display:block;font-size:.63rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
+.main-nav ul{list-style:none;display:flex;align-items:center;gap:2.2rem;}
+.main-nav a{text-decoration:none;font-size:.8rem;font-weight:400;letter-spacing:.06em;color:var(--charcoal);transition:color .2s;}
+.main-nav a:hover{color:var(--terracotta);}
+.nav-cta{background:var(--terracotta)!important;color:var(--white)!important;padding:.5rem 1.4rem;border-radius:2rem;font-weight:500!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--deep-tc)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--charcoal);border-radius:2px;}
 
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+/* ═══════════ BLOG POST ═══════════ */
+.post-wrap{
+  max-width:740px;
+  margin:0 auto;
+  padding:calc(4rem + 76px) 1.5rem 6rem;
+}
 
-    /* ── Nav ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      border-bottom: 1px solid #e5e5e0;
-      background: #fafaf7;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.back-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:500;
+  color:var(--terracotta);text-decoration:none;
+  letter-spacing:.05em;margin-bottom:2.5rem;
+  transition:gap .2s;
+}
+.back-link:hover{gap:.7rem;}
+.back-link svg{transform:rotate(180deg);}
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+.post-meta{
+  display:flex;align-items:center;gap:1.2rem;
+  margin-bottom:1.4rem;
+  flex-wrap:wrap;
+}
+.post-date{
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mid);font-weight:400;
+}
+.post-author{
+  font-size:.75rem;letter-spacing:.06em;
+  color:var(--terracotta);font-weight:500;
+}
+.post-meta-sep{
+  width:3px;height:3px;border-radius:50%;background:var(--mid);opacity:.4;
+}
 
-    .nav-logo img {
-      height: 40px;
-      width: auto;
-    }
+.post-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;
+  font-weight:400;
+  line-height:1.25;
+  color:var(--charcoal);
+  margin-bottom:2.2rem;
+}
 
-    .nav-logo-text {
-      font-family: 'Georgia', serif;
-      font-size: 0.95rem;
-      line-height: 1.3;
-    }
+.post-divider{
+  width:60px;height:2px;
+  background:var(--terracotta);
+  opacity:.5;border-radius:2px;
+  margin-bottom:2.4rem;
+}
 
-    .nav-logo-text strong {
-      display: block;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-    }
+.post-body p{
+  font-size:.95rem;
+  line-height:1.9;
+  color:var(--mid);
+  margin-bottom:1.5rem;
+}
+.post-body p:last-child{margin-bottom:0;}
 
-    .nav-logo-text span {
-      font-size: 0.78rem;
-      color: #666;
-      font-style: italic;
-    }
+.post-body h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;
+  font-weight:500;
+  line-height:1.3;
+  color:var(--charcoal);
+  margin:2.6rem 0 1.2rem;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      font-size: 0.875rem;
-      letter-spacing: 0.03em;
-    }
+.post-body strong{color:var(--charcoal);font-weight:600;}
+.post-body em{font-style:italic;}
 
-    nav ul li a {
-      color: #444;
-      transition: color 0.2s;
-    }
+/* pull quote style for key lines */
+.post-highlight{
+  border-left:3px solid var(--terracotta);
+  padding:.8rem 1.4rem;
+  margin:2rem 0;
+  background:rgba(193,125,90,.06);
+  border-radius:0 8px 8px 0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.18rem;
+  font-style:italic;
+  color:var(--charcoal);
+  line-height:1.6;
+}
 
-    nav ul li a:hover { color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #1a1a1a; }
+.post-sign{
+  margin-top:3rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(193,125,90,.18);
+  font-size:.85rem;
+  color:var(--mid);
+  line-height:1.7;
+}
+.post-sign strong{color:var(--terracotta);}
 
-    /* ── Article Layout ── */
-    .article-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-    }
+.post-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;align-items:center;
+  margin-top:3rem;
+}
+.btn-get-started{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:var(--terracotta);color:var(--white);
+  padding:.82rem 2rem;border-radius:3rem;text-decoration:none;
+  font-size:.84rem;font-weight:500;letter-spacing:.05em;
+  transition:all .25s;
+}
+.btn-get-started:hover{background:var(--deep-tc);transform:translateY(-2px);box-shadow:0 8px 24px rgba(193,125,90,.3);}
+.btn-know{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:500;color:var(--terracotta);
+  text-decoration:none;letter-spacing:.05em;transition:gap .2s;
+}
+.btn-know:hover{gap:.7rem;}
 
-    .back-link {
-      display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888;
-      margin-bottom: 2.5rem;
-      transition: color 0.2s;
-    }
+/* ═══════════ FOOTER ═══════════ */
+#footer{background:var(--charcoal);}
+.footer-top{padding:5rem;}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:5rem;}
+.fform-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);margin-bottom:.5rem;}
+.fform-title em{font-style:italic;color:var(--terracotta);}
+.footer-info-wrap{padding-top:1rem;}
+.footer-info-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:1.5rem;}
+.footer-info-title em{font-style:italic;color:var(--terracotta);}
+.contact-row{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.05);border-radius:1rem;padding:1rem 1.3rem;margin-bottom:.85rem;border:1px solid rgba(255,255,255,.07);}
+.ci-box{width:38px;height:38px;background:rgba(193,125,90,.2);border-radius:.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cr-text strong{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.1rem;}
+.cr-text a,.cr-text span{font-size:.85rem;color:rgba(255,255,255,.65);text-decoration:none;}
+.cr-text a:hover{color:var(--gold);}
+.social-row{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap;}
+.soc-btn{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);padding:.58rem 1.2rem;border-radius:2rem;text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.05em;transition:all .2s;}
+.soc-btn:hover{background:var(--terracotta);border-color:var(--terracotta);color:var(--white);}
+.footer-follow{font-size:.76rem;color:rgba(255,255,255,.3);margin-top:2rem;line-height:1.6;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.8rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-links{display:flex;gap:1.8rem;flex-wrap:wrap;}
+.footer-links a{font-size:.74rem;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.25);}
 
-    .back-link:hover { color: #1a1a1a; text-decoration: none; }
-    .back-link::before { content: "← "; }
-
-    .article-title {
-      font-family: 'Georgia', serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: normal;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-      color: #1a1a1a;
-    }
-
-    .article-meta {
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.02em;
-    }
-
-    .article-meta strong {
-      color: #555;
-      font-weight: 600;
-    }
-
-    .article-divider {
-      border: none;
-      border-top: 1px solid #e5e5e0;
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── Article Body ── */
-    .article-body p {
-      margin-bottom: 1.5rem;
-      font-size: 1.05rem;
-      color: #2a2a2a;
-    }
-
-    .article-body h2 {
-      font-family: 'Georgia', serif;
-      font-size: 1.3rem;
-      font-weight: normal;
-      margin: 2.5rem 0 1rem;
-      color: #1a1a1a;
-    }
-
-    .article-body strong {
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    .article-body em {
-      font-style: italic;
-    }
-
-    /* ── CTA Block ── */
-    .article-cta {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #e5e5e0;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.65rem 1.5rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      border: 1px solid #1a1a1a;
-      color: #1a1a1a;
-      background: transparent;
-      transition: background 0.2s, color 0.2s;
-      cursor: pointer;
-    }
-
-    .btn:hover { background: #1a1a1a; color: #fafaf7; text-decoration: none; }
-
-    .btn-primary {
-      background: #1a1a1a;
-      color: #fafaf7;
-    }
-
-    .btn-primary:hover { background: #333; }
-
-    /* ── Footer ── */
-    footer {
-      background: #1a1a1a;
-      color: #ccc;
-      padding: 3rem 2.5rem;
-      font-size: 0.85rem;
-    }
-
-    .footer-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    footer h3 {
-      font-size: 1rem;
-      font-weight: normal;
-      color: #fff;
-      margin-bottom: 1rem;
-      font-family: 'Georgia', serif;
-    }
-
-    footer h3 em { font-style: italic; color: #bfa97a; }
-
-    footer p, footer a { color: #aaa; line-height: 2; }
-    footer a:hover { color: #fff; }
-
-    footer strong { color: #ddd; }
-
-    .footer-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .footer-bottom {
-      max-width: 960px;
-      margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid #333;
-      color: #666;
-      font-size: 0.78rem;
-    }
-
-    .social-links { display: flex; gap: 1rem; margin-top: 0.75rem; }
-    .social-links a { color: #aaa; font-size: 0.85rem; }
-    .social-links a:hover { color: #fff; }
-
-    @media (max-width: 600px) {
-      nav { padding: 1rem 1.25rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
-      nav ul { gap: 1rem; flex-wrap: wrap; }
-      .footer-inner { grid-template-columns: 1fr; }
-    }
-  </style>
+@media(max-width:960px){
+  #header{padding:0 1.5rem;}
+  .main-nav ul{display:none;}
+  .hamburger{display:flex;}
+  .main-nav.open ul{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:76px;left:0;right:0;background:rgba(250,246,239,.98);padding:2rem 1.5rem;gap:1.4rem;border-bottom:1px solid var(--sand);}
+  .footer-top{padding:5rem 1.5rem;}
+  .footer-bottom{padding:1.5rem!important;flex-direction:column;align-items:center;text-align:center;}
+  .post-title{font-size:1.8rem;}
+  .post-body h2{font-size:1.3rem;}
+}
+</style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-logo">
-      <img src="https://mind-movement-space.github.io/mindmovementspace/logo.png" alt="The Mind Movement Space" />
-      <div class="nav-logo-text">
-        <strong>The Mind Movement Space</strong>
-        <span>Master your mind. Elevate your performance.</span>
-      </div>
+<header id="header">
+  <div class="logo-wrap">
+    <img src="logo.png" alt="The Mind Movement Space" class="logo-img" loading="lazy" />
+    <div class="logo-text">
+      <strong>The Mind Movement Space</strong>
+      <span>Master your mind.<br>Elevate your performance.</span>
     </div>
+  </div>
+  <nav class="main-nav" id="mainNav">
     <ul>
-      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#intro">Home</a></li>
-      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#about">About</a></li>
-      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#services">Services</a></li>
-      <li><a href="https://mind-movement-space.github.io/mindmovementspace/website.html#experience">Experience</a></li>
-      <li><a href="https://mind-movement-space.github.io/mindmovementspace/blog.html">Blog</a></li>
-      <li><a href="#footer">Get in Touch</a></li>
+      <li><a href="website.html#intro">Home</a></li>
+      <li><a href="website.html#about">About</a></li>
+      <li><a href="website.html#services">Services</a></li>
+      <li><a href="website.html#experience">Experience</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="#footer" class="nav-cta">Get in Touch</a></li>
     </ul>
   </nav>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('mainNav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</header>
 
-  <!-- Article -->
-  <main class="article-wrapper">
-    <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html" class="back-link">Back to Blog</a>
+<main class="post-wrap">
 
-    <h1 class="article-title">Cleared to Play. Not Ready to Return.</h1>
+  <a href="blog.html" class="back-link">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Blog
+  </a>
 
-    <p class="article-meta"><strong>Sakshi Jhaveri</strong> &nbsp;·&nbsp; 14th May 2026</p>
+  <h1 class="post-title">The Psychological Cost of Being Injured.</h1>
+  <div class="post-divider"></div>
 
-    <hr class="article-divider" />
+  <div class="post-meta">
+    <span class="post-author">Sakshi Jhaveri</span>
+    <span class="post-meta-sep"></span>
+    <span class="post-date">23th May 2026</span>
+  </div>
 
-    <div class="article-body">
+  <div class="post-body">
+    <p>Due to an injury, a 15-year-old athlete was advised to take a month off.
+    It doesn't seem like much, a month. However, it can seem like an eternity to athletes.
+    Something didn't feel quite right when they eventually returned. Not in a physical sense. But on the inside.
+    They hadn't disclosed their struggles to anyone. Not their coaches. Not their parents. Not their teammates. They simply carried it. Silently. Alone.</p>
 
-      <p>Due to an injury, a 15-year-old athlete was advised to take a month off.</p>
+    <p>And when they finally spoke about it, they said something worth holding onto. </p>
+        <div class="post-highlight">"I was not able to play my sport for so long. I didn't like it when I was not allowed to play. It didn't feel nice. It felt like I lost a part of me."</div>
+        <p> And they said all of this while crying their eyes out.</p>
 
-      <p>It doesn't seem like much, a month. However, it can seem like an eternity to athletes.</p>
+    <p>That feeling? It's more common than people think.</p>
 
-      <p>Something didn't feel quite right when they eventually returned. Not in a physical sense. But on the inside.</p>
+    <h2>It's more than just physical</h2>
 
-      <p>They hadn't disclosed their struggles to anyone. Not their coaches. Not their parents. Not their teammates. They simply carried it. Silently. Alone.</p>
+    <p>Getting clearance from your physician or physiotherapist feels like the moment you've been waiting for.
+    And it is. It really is.
+    However, such clearance often comes with something unexpected for many athletes. The body is ready, but the mind is not quite there yet.</p>
 
-      <p>And when they finally spoke about it, they said something worth holding onto. <em>"I was not able to play my sport for so long. I didn't like it when I was not allowed to play. It didn't feel nice. It felt like I lost a part of me."</em> And they said all of this while crying their eyes out.</p>
+    <p>We talk about the physical aspects of injuries all the time. The timeline, the workouts, the scans, the rehabilitation.</p>
 
-      <p>That feeling? It's more common than people think.</p>
+    <p>However, we don't talk enough about what is happening on the inside.
+    The self-doubt. The worry that it will recur. The strange grief of having been away from something that feels like a huge part of who you are.</p>
 
-      <h2>It's more than just physical</h2>
+    <p>Being away from sports for even a few weeks might seem like much more than just missing practice. For athletes whose identity, routine, and friendships all revolve around their sport, that absence cuts deep.</p>
 
-      <p>Getting clearance from your physician or physiotherapist feels like the moment you've been waiting for.</p>
-
-      <p>And it is. It really is.</p>
-
-      <p>However, such clearance often comes with something unexpected for many athletes. The body is ready, but the mind is not quite there yet.</p>
-
-      <p>We talk about the physical aspects of injuries all the time. The timeline, the workouts, the scans, the rehabilitation.</p>
-
-      <p>However, we don't talk enough about what is happening on the inside.</p>
-
-      <p>The self-doubt. The worry that it will recur. The strange grief of having been away from something that feels like a huge part of who you are.</p>
-
-      <p>Being away from sports for even a few weeks might seem like much more than just missing practice. For athletes whose identity, routine, and friendships all revolve around their sport, that absence cuts deep.</p>
-
-      <p>It doesn't make them weak. It makes them human.</p>
-
-      <h2>The ones who don't say anything</h2>
-
-      <p>There is something that happens in sport settings more often than people realise.</p>
-
-      <p>A lot of young athletes hide their injuries. They don't tell their coaches. They don't tell their parents. They just carry it. Quietly. Alone. And hope nobody notices. Because telling someone means being asked to rest. And resting means losing their spot. Falling behind. Watching everyone else move forward while they sit on the sidelines.</p>
-
-      <p>In many sport environments, athletes have hidden their injuries for weeks. Sometimes longer. And when people around them eventually find out, the practical support kicks in quickly. Coaches step in, arrangements are made, the physical side gets taken care of.</p>
-
-      <p>But the emotional side stays buried.</p>
-
-      <p>Some athletes will deny their injury even in spaces that are meant to feel safe. Because the fear — of disappointing parents, of being seen as weak, of losing everything they have worked for — runs so deep that silence just feels easier.</p>
-
-      <p>That is what happens when sport culture ties an athlete's worth entirely to their performance.</p>
-
-      <h2>What that silence costs them</h2>
-
-      <p>In the short term, hiding an injury turns something manageable into something serious. And the longer-term impact is quieter and, honestly, more damaging.</p>
-
-      <p>It teaches athletes to stop listening to their bodies. It teaches them that pain is something to push through, not pay attention to.</p>
-
-      <p>And it builds a habit of staying silent about struggle that doesn't just disappear when the injury heals.</p>
-
-      <h2>What can actually help</h2>
-
-      <p>If you're an athlete reading this, the first thing I want you to do is to speak up early. Telling someone isn't giving up. It's actually what gets you back faster and stronger. The longer you hide it, the harder the road becomes — physically and mentally.</p>
-
-      <p>And if you're recovering, give yourself permission to feel whatever you're feeling. The fear, the frustration, the doubt — it's all valid. You don't have to pretend you are fine just because the scans say you are. Work on your mental return alongside your physical one. Visualise yourself back in the game. Reconnect with why you love your sport. Be around your team even when you're not playing. Ease back in without the pressure of performing immediately.</p>
-
-      <p>If the anxiety around returning feels too big to manage on your own, that's okay too. That is exactly where a sport psychologist can help. It's not about being broken. It's about having support for every part of the process. A sport psychologist works with athletes on the fear of re-injury, rebuilding confidence, working through identity and loss, and creating a mental return to play that runs alongside the physical one. Because one without the other is never really the full picture.</p>
-
-      <p><strong>For parents</strong>, the most important thing you can do is make it safe for them to tell you. Ask how they're feeling, not just how training went. And pay attention to how you respond when they do tell you something. If the first reaction is panic, frustration, or pressure, they'll remember that. And next time, they may not say anything at all. Creating a space where they can be honest without the fear of disappointing you is one of the most powerful things you can do for them.</p>
-
-      <p><strong>And for coaches</strong>, the culture around injury starts in your environment. When rest is normalised, when recovery is treated as part of training and not a setback, athletes stop feeling like they have to hide. The athletes who trust their coaches enough to be honest about their injuries are also the ones who come back better. That trust is built over time, in the small moments, not just the big ones.</p>
-
-      <h2>The road back takes time</h2>
-
-      <p>Returning to sport isn't just a physical process. It's an emotional one too.</p>
-
-      <p>The hesitation, the doubt, the days where everything is fine physically but something still feels off — that's all a part of it.</p>
-
-      <p>Be as patient with your mind as you were with your body.</p>
-
-      <p><strong>At The Mind Movement Space</strong>, we work with athletes, the fitness and exercise community, and those on a rehabilitation journey — because the psychological side of movement matters at every level.</p>
-
-      <div class="article-cta">
-        <a href="#footer" class="btn btn-primary">Get in Touch</a>
-        <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html" class="btn">Back to Blog</a>
-      </div>
-
+    <div class="post-highlight">
+      It doesn't make them weak. It makes them human.
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="footer-inner">
-      <div>
-        <h3>The Mind <em>Movement</em> Space</h3>
-        <p><strong>Email</strong><br><a href="mailto:sakshipjhaveri@gmail.com">sakshipjhaveri@gmail.com</a></p>
-        <p><strong>Phone</strong><br><a href="tel:+917600640995">+91 76006 40995</a></p>
-        <p><strong>WhatsApp</strong><br><a href="https://wa.me/917600640995?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20services">Message on WhatsApp</a></p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/sakshi-jhaveri">LinkedIn</a>
-          <a href="https://www.instagram.com/themindmovementspace">Instagram</a>
+    <h2>The ones who don't say anything</h2>
+
+    <p>There is something that happens in sport settings more often than people realise.</p>
+
+    <p>A lot of young athletes hide their injuries. They don't tell their coaches. They don't tell their parents. They just carry it. Quietly. Alone. And hope nobody notices. Because telling someone means being asked to rest. And resting means losing their spot. Falling behind. Watching everyone else move forward while they sit on the sidelines.</p>
+
+    <p>In many sport environments, athletes have hidden their injuries for weeks. Sometimes longer. And when people around them eventually find out, the practical support kicks in quickly. Coaches step in, arrangements are made, the physical side gets taken care of.</p>
+
+    <p>But the emotional side stays buried.</p>
+
+    <p>Some athletes will deny their injury even in spaces that are meant to feel safe. Because the fear, of disappointing parents, of being seen as weak, of losing everything they have worked for, runs so deep that silence just feels easier. </p>
+
+    <p>That is what happens when sport culture ties an athlete's worth entirely to their performance.</p>
+
+    <h2>What that silence costs them</h2>
+
+    <p>In the short term, hiding an injury turns something manageable into something serious. And the longer-term impact is quieter and, honestly, more damaging.</p>
+
+    <p>It teaches athletes to stop listening to their bodies. It teaches them that pain is something to push through, not pay attention to. And it builds a habit of staying silent about struggle that doesn't just disappear when the injury heals.</p>
+
+    <h2>What can actually help</h2>
+
+    <p>If you’re an athlete reading this, the first thing I want you to do, is to speak up early. Telling someone isn’t giving up. It’s actually what gets you back faster and stronger. The longer you hide it, the harder the road becomes, physically and mentally.</p>
+
+    <p>And if you’re recovering, give yourself permission to feel whatever you’re feeling. The fear, the frustration, the doubt, it’s all valid. You don’t have to pretend you are fine just because the scans say you are. Work on your mental return alongside your physical one. Visualize yourself back in the game. Reconnect with why you love your sport. Be around your team even when you’re not playing. Ease back in without the pressure of performing immediately. If the anxiety around returning feels too big to manage on your own, that’s okay too. That is exactly where a sport psychologist can help. It’s not about being broken. It’s about having support for every part of the process. A sport psychologist works with athletes on the fear of re-injury, rebuilding confidence, working through identity and loss, and creating a mental return to play that runs alongside the physical one. Because one without the other is never really the full picture.</p>
+
+    <p>For parents, the most important thing you can do is make it safe for them to tell you. Ask how they're feeling, not just how training went. And pay attention to how you respond when they do tell you something. If the first reaction is panic, frustration, or pressure, they'll remember that. And next time, they may not say anything at all. Creating a space where they can be honest without the fear of disappointing you is one of the most powerful things you can do for them.</p>
+
+    <p>And for coaches, the culture around injury starts in your environment. When rest is normalised, when recovery is treated as part of training and not a setback, athletes stop feeling like they have to hide. The athletes who trust their coaches enough to be honest about their injuries are also the ones who come back better. That trust is built over time, in the small moments, not just the big ones.</p>
+
+    <h2>The road back takes time</h2>
+
+    <p>Returning to sport isn't just a physical process. It's an emotional one too.</p>
+
+    <p>The hesitation, the doubt, the days where everything is fine physically but something still feels off: that's all a part of it.</p>
+
+    <div class="post-highlight">
+      Be as patient with your mind as you were with your body.
+    </div>
+  </div>
+
+  <div class="post-sign">
+    <strong>At The Mind Movement Space</strong>, we work with athletes, the fitness and exercise community, and those on a rehabilitation journey — because the psychological side of movement matters at every level.
+  </div>
+
+  <div class="post-actions">
+    <a href="#footer" class="btn-get-started">Get in Touch</a>
+    <a href="blog.html" class="btn-know">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="transform:rotate(180deg)"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Blog
+    </a>
+  </div>
+
+</main>
+
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-info-wrap">
+        <h3 class="fform-title">Contact Details</h3>
+        <div class="footer-info-title">The Mind <em>Movement</em> Space</div>
+        <div class="contact-row">
+          <div class="ci-box"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 3h14a1 1 0 011 1v9a1 1 0 01-1 1h-14a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="#C17D5A" stroke-width="1.4"/><path d="M1 4l7.5 5.5L16 4" stroke="#C17D5A" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <div class="cr-text"><strong>Email</strong><a href="mailto:sakshipjhaveri@gmail.com">sakshipjhaveri@gmail.com</a></div>
         </div>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <p style="font-size:0.82rem; color:#777; margin-bottom:0.75rem;">Stay connected for insights on sport, movement, and psychological well-being.</p>
-        <nav class="footer-nav">
-          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#intro">Home</a>
-          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#about">About</a>
-          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#services">Services</a>
-          <a href="https://mind-movement-space.github.io/mindmovementspace/website.html#experience">Experience</a>
-          <a href="https://mind-movement-space.github.io/mindmovementspace/blog.html">Blog</a>
-          <a href="#footer">Contact</a>
-        </nav>
+        <div class="contact-row">
+          <div class="ci-box"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M3 2h3.5l2 4-2 1.5A9.5 9.5 0 009.5 13L11 11l4 2v3.5c0 .8-.7 1.5-1.5 1.5A14 14 0 011.5 2C1.5 1.2 2.2.5 3 .5z" stroke="#C17D5A" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <div class="cr-text"><strong>Phone</strong><a href="tel:+917600640995">+91 76006 40995</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="ci-box"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M8.5 2.2a6.3 6.3 0 00-5.4 9.7L2 15l3.3-1.1a6.3 6.3 0 003.2.9 6.3 6.3 0 000-12.6z" stroke="#C17D5A" stroke-width="1.3" stroke-linejoin="round"/><path d="M6.2 6.4c.3-.3.7-.3 1 0l.8.8c.3.3.3.7 0 1l-.3.3a3.1 3.1 0 002.2 2.2l.3-.3c.3-.3.7-.3 1 0l.8.8c.3.3.3.7 0 1l-.4.4c-.4.4-1 .6-1.6.5-2.4-.4-4.6-2.5-5-5-.1-.6.1-1.2.5-1.6l.4-.4z" stroke="#C17D5A" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="cr-text"><strong>WhatsApp</strong><a href="https://wa.me/917600640995?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20services" target="_blank" rel="noopener">Message on WhatsApp</a></div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/sakshi-jhaveri" class="soc-btn" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M10 2H7.5A3 3 0 004.5 5v2H3v2.5h1.5V13H7v-3.5H9.5L10 7H7V5a.5.5 0 01.5-.5H10V2z" fill="currentColor"/></svg>LinkedIn</a>
+          <a href="https://www.instagram.com/themindmovementspace" class="soc-btn" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.3"/><circle cx="10.2" cy="3.8" r=".8" fill="currentColor"/></svg>Instagram</a>
+        </div>
+        <p class="footer-follow">Stay connected for insights on sport, movement, and psychological well-being.</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      © 2026 The Mind Movement Space &nbsp;·&nbsp; Sakshi Jhaveri – Sport &amp; Exercise Psychologist
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <a href="website.html#intro">Home</a><a href="website.html#about">About</a><a href="website.html#services">Services</a>
+      <a href="website.html#experience">Experience</a><a href="blog.html">Blog</a><a href="#footer">Contact</a>
     </div>
-  </footer>
+    <div class="footer-copy">© 2026 The Mind Movement Space &nbsp;·&nbsp; Sakshi Jhaveri – Sport &amp; Exercise Psychologist</div>
+  </div>
+</footer>
 
+<script>
+document.getElementById('hamburger').onclick = function(){
+  document.getElementById('mainNav').classList.toggle('open');
+};
+</script>
 </body>
 </html>
